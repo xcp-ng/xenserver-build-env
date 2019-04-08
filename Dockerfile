@@ -23,6 +23,7 @@ RUN     yum update -y
 RUN     yum install -y --exclude=gcc-xs \
             gcc \
             gcc-c++ \
+            genisoimage \
             git \
             git-lfs \
             make \
@@ -31,6 +32,7 @@ RUN     yum install -y --exclude=gcc-xs \
             rpm-build \
             rpm-python \
             sudo \
+            syslinux \
             yum-utils \
             epel-release
 
