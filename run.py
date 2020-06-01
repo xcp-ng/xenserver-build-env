@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 """
 Thin wrapper around "docker run" which simplifies the creation of a build
