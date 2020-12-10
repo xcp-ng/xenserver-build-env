@@ -1,11 +1,13 @@
 # taken from /usr/lib/rpm/macros
 %__spec_build_pre %{___build_pre}\
-    [ ! -d /usr/lib/opamroot ] || eval $(opam config env --root=/usr/lib/opamroot)
+    [ ! -d /usr/lib/opamroot ] || eval $(opam config env --root=/usr/lib/opamroot)\
+    [ ! -d /usr/lib64/opamroot ] || eval $(opam config env --root=/usr/lib64/opamroot)
 
 # taken from /usr/lib/rpm/redhat/macros
 %__spec_install_pre %{___build_pre}\
     [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf "${RPM_BUILD_ROOT}"\
     mkdir -p `dirname "$RPM_BUILD_ROOT"`\
     mkdir "$RPM_BUILD_ROOT"\
-    [ ! -d /usr/lib/opamroot ] || eval $(opam config env --root=/usr/lib/opamroot)
+    [ ! -d /usr/lib/opamroot ] || eval $(opam config env --root=/usr/lib64/opamroot)\
+    [ ! -d /usr/lib/opamroot ] || eval $(opam config env --root=/usr/lib64/opamroot)
 
