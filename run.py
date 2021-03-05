@@ -15,7 +15,8 @@ import uuid
 CONTAINER_PREFIX = "xcp-ng/xcp-ng-build-env"
 SRPMS_MOUNT_ROOT = "/tmp/docker-SRPMS"
 
-DEFAULT_BRANCH='8.0'
+DEFAULT_BRANCH = '8.0'
+
 
 def make_mount_dir():
     """
@@ -44,7 +45,8 @@ def main():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-b', '--branch',
-                        help='XCP-ng version: 7.6, %s, etc. If not set, will default to %s.' % (DEFAULT_BRANCH, DEFAULT_BRANCH))
+                        help=('XCP-ng version: 7.6, %s, etc. If not set, will default to '
+                              '%s.') % (DEFAULT_BRANCH, DEFAULT_BRANCH))
     parser.add_argument('-l', '--build-local',
                         help="Install dependencies for the spec file(s) found in the SPECS/ subdirectory "
                              "of the directory passed as parameter, then build the RPM(s). "
@@ -139,7 +141,7 @@ def main():
     if args.dir:
         for localdir in args.dir:
             if not os.path.isdir(localdir):
-                print "Local directory argument is not a directory!"
+                print("Local directory argument is not a directory!")
                 sys.exit(1)
             ext_path = os.path.abspath(localdir)
             int_path = os.path.basename(ext_path)
@@ -155,11 +157,11 @@ def main():
 
     # exec "docker run"
     docker_args += ["%s:%s" % (CONTAINER_PREFIX, branch), "/usr/local/bin/init-container.sh"]
-    print >> sys.stderr, "Launching docker with args %s" % docker_args
+    print("Launching docker with args %s" % docker_args, file=sys.stderr)
     return_code = subprocess.call(docker_args)
 
     if srpm_mount_dir:
-        print "Cleaning up temporary mount directory"
+        print("Cleaning up temporary mount directory")
         shutil.rmtree(srpm_mount_dir)
 
     sys.exit(return_code)

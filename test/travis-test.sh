@@ -2,7 +2,7 @@
 
 set -eux
 
-./build.sh dev
+./build.sh 8.2
 
 PACKAGE=emu-manager
 REPO=xcp-emu-manager
