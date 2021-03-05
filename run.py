@@ -17,6 +17,7 @@ SRPMS_MOUNT_ROOT = "/tmp/docker-SRPMS"
 
 DEFAULT_BRANCH = '8.0'
 
+
 def make_mount_dir():
     """
     Make a randomly-named directory under SRPMS_MOUNT_ROOT.
