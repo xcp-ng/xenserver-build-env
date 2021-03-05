@@ -45,7 +45,8 @@ def main():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-b', '--branch',
-                        help='XCP-ng version: 7.6, %s, etc. If not set, will default to %s.' % (DEFAULT_BRANCH, DEFAULT_BRANCH))
+                        help=('XCP-ng version: 7.6, %s, etc. If not set, will default to '
+                              '%s.') % (DEFAULT_BRANCH, DEFAULT_BRANCH))
     parser.add_argument('-l', '--build-local',
                         help="Install dependencies for the spec file(s) found in the SPECS/ subdirectory "
                              "of the directory passed as parameter, then build the RPM(s). "
