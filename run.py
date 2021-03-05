@@ -141,7 +141,7 @@ def main():
     if args.dir:
         for localdir in args.dir:
             if not os.path.isdir(localdir):
-                print "Local directory argument is not a directory!"
+                print("Local directory argument is not a directory!")
                 sys.exit(1)
             ext_path = os.path.abspath(localdir)
             int_path = os.path.basename(ext_path)
@@ -161,7 +161,7 @@ def main():
     return_code = subprocess.call(docker_args)
 
     if srpm_mount_dir:
-        print "Cleaning up temporary mount directory"
+        print("Cleaning up temporary mount directory")
         shutil.rmtree(srpm_mount_dir)
 
     sys.exit(return_code)
