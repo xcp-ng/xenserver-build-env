@@ -15,7 +15,7 @@ import uuid
 CONTAINER_PREFIX = "xcp-ng/xcp-ng-build-env"
 SRPMS_MOUNT_ROOT = "/tmp/docker-SRPMS"
 
-DEFAULT_BRANCH='8.0'
+DEFAULT_BRANCH = '8.0'
 
 def make_mount_dir():
     """
