@@ -36,10 +36,23 @@ if [ "$(uname -m)" == "arm64" ]; then
     CUSTOM_ARGS+=( "--platform" "linux/amd64" )
 fi
 
+CUSTOM_UID=$(id -u)
+CUSTOM_GID=$(id -g)
+
+if [ "$CUSTOM_UID" -eq "0" ]; then
+	echo "You are root user, building with default user (1000)"
+	CUSTOM_UID="1000"
+fi
+
+if [ "$CUSTOM_GID" -eq "0" ]; then
+	echo "You are root user, building with default user (1000)"
+	CUSTOM_GID="1000"
+fi
+
 # Support for seamless use of current host user
 # and Docker user "builder" inside the image
-CUSTOM_ARGS+=( "--build-arg" "CUSTOM_BUILDER_UID=$(id -u)" )
-CUSTOM_ARGS+=( "--build-arg" "CUSTOM_BUILDER_GID=$(id -g)" )
+CUSTOM_ARGS+=( "--build-arg" "CUSTOM_BUILDER_UID=$CUSTOM_UID" )
+CUSTOM_ARGS+=( "--build-arg" "CUSTOM_BUILDER_GID=$CUSTOM_GID" )
 
 docker build \
     $(echo "${CUSTOM_ARGS[@]}") \
